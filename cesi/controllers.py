@@ -1,4 +1,4 @@
-from run import db
+from db import db
 from models import User
 
 
@@ -20,5 +20,6 @@ def check_database():
         db.create_all()
         ### Add Admin User
         admin_user = User.register(username="admin", password="admin", usertype=0)
+        
     except Exception as e:
         print(e)

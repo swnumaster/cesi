@@ -3,14 +3,11 @@ import argparse
 import signal
 import os
 import importlib
+from db import db
 
 from flask import Flask, render_template, jsonify, g
-from flask_sqlalchemy import SQLAlchemy
 
 from version import __version__
-
-db = SQLAlchemy()
-
 
 def create_app(cesi):
     from api.v2 import register_blueprints
@@ -70,7 +67,7 @@ if __name__ == "__main__":
         "-c", "--config-file", "--config", help="config file", required=True
     )
     parser.add_argument("--host", help="Host of the cesi", default="0.0.0.0")
-    parser.add_argument("-p", "--port", help="Port of the cesi", default="5000")
+    parser.add_argument("-p", "--port", help="Port of the cesi", default="5001")
     parser.add_argument(
         "--debug", help="Actived debug mode of the cesi", action="store_true"
     )
