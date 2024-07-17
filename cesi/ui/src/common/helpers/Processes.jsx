@@ -46,7 +46,7 @@ class ProcessLog extends React.Component {
         <Button color="info" onClick={this.showLogs}>
           Log
         </Button>{" "}
-        <Modal isOpen={this.state.modal} toggle={this.toggle}>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} size="lg">
           <ModalHeader toggle={this.toggle}>
             Node: {node.general.name} | Process: {process.name}
           </ModalHeader>
