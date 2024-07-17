@@ -14,12 +14,12 @@
     "supervisor"
   ],
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^1.7.2",
     "bootstrap": "^4.5.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^5.0.1",
     "reactstrap": "^8.5.1"
   },
   "scripts": {
@@ -29,7 +29,6 @@
     "eject": "react-scripts eject"
   },
   "proxy": "http://cesi-backend:5000",
-  "devDependencies": {},
   "browserslist": [
     ">0.2%",
     "not dead",
