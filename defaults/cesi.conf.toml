@@ -26,7 +26,15 @@ admin_password = "admin"        # Password of admin user
 [[nodes]]
 name = "Gateway-00033"
 environment = "UAT"
+username = "supervisor"
+password = "h5oWZLFnIVkL"
+host = "10.8.0.18"
+port = "9001"
+
+[[nodes]]
+name = "Gateway-00034"
+environment = "UAT"
 username = "overwatch"
 password = "overwatch"
-host = "10.8.0.18"
+host = "10.8.0.181"
 port = "9001"

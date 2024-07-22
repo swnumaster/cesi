@@ -138,9 +138,17 @@ class Processes extends React.Component {
     const nodeName = this.props.node.general.name;
     api.nodes.allProcesses[action](nodeName).then(() => {
       console.log("Updating nodes for single node action.");
-      this.props.refresh();
+      this.props.refreshNodes();
     });
   };
+
+  refreshNode = () => {
+    this.props.refreshNode(this.props.node.general.name);
+  }
+
+  componentDidMount() {
+    this.refreshNode();
+  }
 
   render() {
     const { node, filterFunc } = this.props;
@@ -150,6 +158,12 @@ class Processes extends React.Component {
           <CardTitle>
             Processes for {node.general.name}{" "}
             <Badge color="secondary">{node.processes.length}</Badge>{" "}
+            <Button
+              color="primary"
+              onClick={() => this.refreshNode()}
+            >
+              Refresh
+            </Button>{" "}
             <Button
               color="success"
               onClick={() => this.handleAllProcess("start")}

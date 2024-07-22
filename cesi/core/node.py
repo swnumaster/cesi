@@ -115,6 +115,16 @@ class Node:
             "general": self.serialize_general(),
             "processes": self.serialize_processes(),
         }
+    
+    def serialize_basic(self):
+        return {
+            "general": {
+                "name": self.name,
+                "environment": self.environment,
+                "connected": False,
+            },
+            "processes": [],
+        }
 
     def full_name(self):
         return "node:{}".format(self.name)

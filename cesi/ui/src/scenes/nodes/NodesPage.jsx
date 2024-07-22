@@ -30,7 +30,7 @@ class NodesPage extends Component {
 
   render() {
     const { checks } = this.state;
-    const { nodes, refreshNodes } = this.props;
+    const { nodes, refreshNodes, refreshNode } = this.props;
 
     return (
       <Container fluid>
@@ -49,7 +49,8 @@ class NodesPage extends Component {
                 <Processes
                   key={node.general.name}
                   node={node}
-                  refresh={refreshNodes}
+                  refreshNodes={refreshNodes}
+                  refreshNode={refreshNode}
                 />
               ))}
           </Col>

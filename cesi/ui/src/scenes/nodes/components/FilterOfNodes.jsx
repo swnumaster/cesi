@@ -40,7 +40,8 @@ const FilterOfNodes = props => {
             id={node.general.name}
             label={node.general.name}
             onChange={onInputChange}
-            disabled
+            checked={checks.indexOf(node.general.name) >= 0}
+            inline
           />
         ))}
       </Card>

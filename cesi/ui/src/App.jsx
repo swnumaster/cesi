@@ -48,6 +48,19 @@ class App extends Component {
     this.setState({ nodes });
   };
 
+  handleRefreshNode = async (nodeName) => {
+    const { node } = await api.nodes.getNode(nodeName);
+    this.setState(prevState => {
+      const nodes = prevState.nodes.map(n => {
+        if (n.general.name === node.general.name) {
+          return node;
+        }
+        return n;
+      });
+      return { nodes };
+    });
+  };
+
   handleRefreshEnvironments = async () => {
     const environments = await api.environments.get();
     this.setState({ environments });
@@ -143,6 +156,7 @@ class App extends Component {
                     <NodesPage
                       {...props}
                       nodes={this.state.nodes}
+                      refreshNode={this.handleRefreshNode}
                       refreshNodes={this.handleRefreshNodes}
                     />
                   )}

@@ -112,14 +112,13 @@ class Cesi:
         return _node
 
     def serialize_nodes(self):
-        return [n.serialize() for n in self.nodes]
+        return [n.serialize_basic() for n in self.nodes]
 
     def get_nodes_by_environment(self, environment_name):
         nodes = []
         for n in self.nodes:
             if n.environment == environment_name:
-                nodes.append(n.serialize())
-
+                nodes.append(n.serialize_basic())
         return nodes
 
     def get_environment_details(self, environment_name):
