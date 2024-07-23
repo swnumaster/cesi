@@ -19,7 +19,8 @@ def get_nodes():
 @is_user_logged_in()
 def get_node(node_name):
     node = cesi.get_node_or_400(node_name)
-    return jsonify(status="success", node=node.serialize())
+    serialized_node = node.serialize()
+    return jsonify(status="success", node=serialized_node)
 
 
 @nodes.route("/<node_name>/processes/")

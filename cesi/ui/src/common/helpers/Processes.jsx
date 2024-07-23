@@ -7,7 +7,8 @@ import {
   Table,
   Modal,
   ModalHeader,
-  ModalBody
+  ModalBody,
+  Spinner
 } from "reactstrap";
 import PropTypes from "prop-types";
 
@@ -161,24 +162,39 @@ class Processes extends React.Component {
             <Button
               color="primary"
               onClick={() => this.refreshNode()}
+              disabled={this.props.isLoading}
             >
-              Refresh
+              {
+                this.props.isLoading ? <>
+                  <Spinner size="sm">
+                    Loading...
+                  </Spinner>
+                  <span>
+                    {' '}Loading
+                  </span>
+                </> : <>
+                  Refresh
+                </>
+              }
             </Button>{" "}
             <Button
               color="success"
               onClick={() => this.handleAllProcess("start")}
+              disabled={this.props.isLoading}
             >
               Start All
             </Button>{" "}
             <Button
               color="danger"
               onClick={() => this.handleAllProcess("stop")}
+              disabled={this.props.isLoading}
             >
               Stop All
             </Button>{" "}
             <Button
               color="warning"
               onClick={() => this.handleAllProcess("restart")}
+              disabled={this.props.isLoading}
             >
               Restart All
             </Button>{" "}

@@ -79,7 +79,7 @@ const Header = ({ onLogOut, isAdmin, version }) => {
             Nodes
           </NavLink>
         </NavItem>
-        <NavItem>
+        {/* <NavItem>
           <NavLink exact replace to="/environments" tag={RRNavLink}>
             Environments
           </NavLink>
@@ -88,7 +88,7 @@ const Header = ({ onLogOut, isAdmin, version }) => {
           <NavLink exact replace to="/groups" tag={RRNavLink}>
             Groups
           </NavLink>
-        </NavItem>
+        </NavItem> */}
         {isAdmin && (
           <NavItem>
             <NavLink exact replace to="/users" tag={RRNavLink}>

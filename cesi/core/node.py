@@ -109,11 +109,13 @@ class Node:
         return [p.serialize() for p in self.processes]
 
     def serialize(self):
-        _serialized_general = self.serialize_general()
-        _serialized_processes = self.serialize_processes()
+        serialized_general = self.serialize_general()
+        serialized_processes = []
+        if serialized_general["connected"]:
+            serialized_processes = self.serialize_processes()
         return {
-            "general": self.serialize_general(),
-            "processes": self.serialize_processes(),
+            "general": serialized_general,
+            "processes": serialized_processes,
         }
     
     def serialize_basic(self):

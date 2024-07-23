@@ -7,9 +7,9 @@ import {
   LoginPage,
   DashboardPage,
   ErrorPage,
-  GroupsPage,
   NodesPage,
-  EnvironmentsPage,
+  // GroupsPage,
+  // EnvironmentsPage,
   UsersPage,
   AboutPage,
   ChangePasswordPage
@@ -25,7 +25,9 @@ class App extends Component {
     nodes: [],
     environments: [],
     users: [],
-    groups: []
+    groups: [],
+    checks: [],
+    loadings: [],
   };
 
   handleRefreshActivityLogs = async () => {
@@ -45,10 +47,17 @@ class App extends Component {
 
   handleRefreshNodes = async () => {
     const nodes = await api.nodes.get();
-    this.setState({ nodes });
+    const checks = nodes.map(node => node.general.name);
+    this.setState({ nodes, checks });
   };
 
   handleRefreshNode = async (nodeName) => {
+    // Show loading spinner
+    this.setState(prevState => {
+      const loadings = prevState.loadings.concat([nodeName]);
+      return { loadings };
+    });
+    // Query node details
     const { node } = await api.nodes.getNode(nodeName);
     this.setState(prevState => {
       const nodes = prevState.nodes.map(n => {
@@ -59,6 +68,23 @@ class App extends Component {
       });
       return { nodes };
     });
+    // Hide loading spinner
+    this.setState(prevState => {
+      const loadings = prevState.loadings.filter(name => name !== nodeName);
+      return { loadings };
+    });
+  };
+
+  handleCheckNode = async (nodeName) => {
+    this.setState(prevState => ({
+      checks: prevState.checks.concat([nodeName])
+    }));
+  };
+
+  handleUncheckNode = async (nodeName) => {
+    this.setState(prevState => ({
+      checks: prevState.checks.filter(name => name !== nodeName)
+    }));
   };
 
   handleRefreshEnvironments = async () => {
@@ -156,12 +182,16 @@ class App extends Component {
                     <NodesPage
                       {...props}
                       nodes={this.state.nodes}
+                      checks={this.state.checks}
+                      loadings={this.state.loadings}
                       refreshNode={this.handleRefreshNode}
                       refreshNodes={this.handleRefreshNodes}
+                      handleCheckNode={this.handleCheckNode}
+                      handleUncheckNode={this.handleUncheckNode}
                     />
                   )}
                 />
-                <Route
+                {/* <Route
                   path="/environments"
                   exact
                   render={props => (
@@ -184,7 +214,7 @@ class App extends Component {
                       refreshNodes={this.handleRefreshNodes}
                     />
                   )}
-                />
+                /> */}
                 <Route
                   path="/users"
                   exact
