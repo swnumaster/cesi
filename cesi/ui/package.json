@@ -18,9 +18,9 @@
     "bootstrap": "^4.5.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.0.1",
-    "reactstrap": "^8.5.1"
+    "react-router-dom": "^6.4.0",
+    "react-scripts": "^5.0.0",
+    "reactstrap": "^9.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
